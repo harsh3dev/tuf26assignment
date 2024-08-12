@@ -42,6 +42,7 @@ export function AddPost() {
             }
         } finally {
             setLoading(false);
+            window.location.reload();
         }
     }
 

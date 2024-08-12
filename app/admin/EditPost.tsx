@@ -39,9 +39,12 @@ const EditPost: React.FC<EditPostProps> =({data, className}) => {
         { defaultValues: { question: data.question, answer: data.answer } }
     );
 
+    const [loading, setLoading] = useState(false);
+
     const handleEditPost = async (fdata: DataProps) => {
         const { question, answer } = fdata;
         try {
+            setLoading(true);
             const response = await axios.put(`/api/posts/${data.id}`, {
                 question,
                 answer,
@@ -54,6 +57,10 @@ const EditPost: React.FC<EditPostProps> =({data, className}) => {
             } else {
                 console.error('Unexpected error:', error);
             }
+        }
+        finally {
+            setLoading(false);
+            window.location.reload();
         }
     }
 
@@ -95,7 +102,10 @@ const EditPost: React.FC<EditPostProps> =({data, className}) => {
             </div>
             </div>
             <DialogFooter>
-            <Button type="submit" className="bg-primary hover:bg-secondary text-white" >Save Changes</Button>
+                {
+                loading ? <Button className="bg-primary text-white" disabled>Saving...</Button> : <Button type="submit" className="bg-primary hover:bg-secondary text-white" >Save Changes</Button>
+                }
+            
             </DialogFooter>
             </form>
         </DialogContent>
