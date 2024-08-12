@@ -61,7 +61,7 @@ const Slider = () => {
                         
                         {
                             posts.flatMap((data, index) => {
-                                const isActive = currentIndex===index ? 'bg-white' : 'bg-gray-700';
+                                const isActive = currentIndex===index ? 'dark:bg-white bg-secondary ' : 'dark:bg-gray-700 bg-gray-800  ';
                                 return (
                                     <div key={index} onClick={()=>setCurrentIndex(index)} className={` cursor-pointer w-1 h-1 rounded-full p-1 ${isActive} `} >
                                     </div>

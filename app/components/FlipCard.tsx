@@ -19,7 +19,7 @@ const FlipCard:React.FC<FlipCardProps> = ({data, className}) => {
 
 	return (
 		<div
-			className={`card  min-w-[25vw] min-h-[50vh] w-full max-w-lg flex justify-center items-center relative rounded-md cursor-pointer border border-secondary text-center   ${flip ? 'flip' : ''}`}
+			className={`card  min-w-[25vw] min-h-[50vh] w-full max-w-lg flex justify-center items-center relative rounded-md cursor-pointer border border-secondary text-center bg-[rgb(255,90,90)] bg-[linear-gradient(332deg,_rgba(255,90,90,1)_40%,_rgba(251,209,200,0.9809173669467787)_100%)] dark:bg-[rgb(17,17,17)] dark:bg-[linear-gradient(331deg,_rgba(17,17,17,1)_43%,_rgb(27,_21,_21)_100%)] text-white  ${flip ? 'flip' : ''}`}
 			onClick={() => setFlip(!flip)}
 		>
 			<div title='Click to reveal answer' className="front absolute p-5 text-center text-lg " >
