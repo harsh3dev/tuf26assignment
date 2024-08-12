@@ -26,9 +26,11 @@ interface DataProps {
 export function AddPost() {
     const [open, setOpen] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm<DataProps>();
+    const [loading, setLoading] = useState(false);
 
     const addNewPost = async (data: DataProps) => {
         try {
+            setLoading(true);
             const response = await axios.post('/api/posts', data);
             console.log('SUCCESS', response.data);
             setOpen(false);
@@ -38,6 +40,8 @@ export function AddPost() {
             } else {
                 console.error('Unexpected error:', error);
             }
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -79,7 +83,11 @@ export function AddPost() {
             </div>
             </div>
             <DialogFooter>
-            <Button type="submit" className="bg-primary hover:bg-secondary text-white" >Add Question</Button>
+                {
+                    loading ? <Button className="bg-primary hover:bg-secondary text-white" disabled>Adding...</Button> : 
+                    <Button type="submit" className="bg-primary hover:bg-secondary text-white" >Add Question</Button>
+                }
+            
             </DialogFooter>
             </form>
         </DialogContent>

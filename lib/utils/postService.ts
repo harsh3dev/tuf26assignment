@@ -45,12 +45,17 @@ export const deletePost = async (id: number) => {
     if (!id) 
         throw new Error("Invalid ID");
     if(id===undefined) 
-        throw new Error("Undefined ID");
+        throw new Error("Undefined ID in function");
     try {
-        return await prisma.post.delete({
-        where: { id: id },
+        const deletedPost = await prisma.post.delete({
+            where: { id: id },
         });
-    } catch (error) {
-        throw new Error("Failed to delete post");
+        console.log("Post deleted:", deletedPost);
+        return deletedPost;
+        } catch (error) {
+        console.error("Error deleting post:", error);
+        throw error;
+        } finally {
+        await prisma.$disconnect();
     }
 };
