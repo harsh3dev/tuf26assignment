@@ -2,8 +2,8 @@ import React from 'react'
 import Navbar from "@/app/components/Navbar";
 import { Button } from "@/components/ui/button";
 
-import { MdAdd } from "react-icons/md";
 import Cards from './Cards';
+import { AddPost } from './AddPost';
 
 const page = () => {
     return (
@@ -15,10 +15,7 @@ const page = () => {
                         <h1 className='text-3xl font-bold text-left '>
                             All Questions
                         </h1>
-                        <Button variant={'ghost'} className=' p-4 rounded-full border border-secondary hover:bg-secondary font-semibold text-lg flex justify-center items-center gap-2 '>
-                        <MdAdd />
-                            Add Question
-                        </Button>
+                        <AddPost/>
                     </div>
                     <Cards/>
                 </div>

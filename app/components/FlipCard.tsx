@@ -7,7 +7,7 @@ interface DataProps {
 		id: number;
 		question: string;
 		answer: string;
-		created_At: string;
+		createdAt: string;
 }
 interface FlipCardProps {
 		data: DataProps;

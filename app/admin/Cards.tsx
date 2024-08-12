@@ -1,13 +1,55 @@
-import React from 'react'
-import FlipCard from '../components/FlipCard'
+"use client";
+import React, { useEffect, useState } from 'react'
 import Card from './Card'
+import axios from 'axios';
+
+import { Skeleton } from "@/components/ui/skeleton"
+
+
+
 
 const Cards = () => {
+    const [loading, setLoading] = useState(false);
+    const [posts, setPosts] = useState([]);
+    
+    useEffect(() => {
+        const fetch = async () => {
+            setLoading(true);
+            try {
+                const res = await axios.get('/api/posts');
+                console.log(res.data);
+                setPosts(res.data);
+                // dispatch(setPosts(res.data.Hackathon));
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetch();
+    }, []);
+
+
+
     return (
         <div className=' w-full h-full my-4 rounded-md grid place-items-center '>
             <div className=' w-full h-full p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 '>
                 {
-                    mockData.map((data, index) => {
+                    loading &&(
+                        <>
+                        <Skeleton className={`w-[20vw] h-[30vh] rounded-md `} > </Skeleton>
+                        <Skeleton className={`w-[20vw] h-[30vh] rounded-md `} > </Skeleton>
+                        <Skeleton className={`w-[20vw] h-[30vh] rounded-md `} > </Skeleton>
+                        <Skeleton className={`w-[20vw] h-[30vh] rounded-md `} > </Skeleton>
+                        <Skeleton className={`w-[20vw] h-[30vh] rounded-md `} > </Skeleton>
+                        <Skeleton className={`w-[20vw] h-[30vh] rounded-md `} > </Skeleton>
+                        <Skeleton className={`w-[20vw] h-[30vh] rounded-md `} > </Skeleton>
+                        <Skeleton className={`w-[20vw] h-[30vh] rounded-md `} > </Skeleton>
+                        </>
+                    )
+                }
+                { !loading &&
+                    posts.map((data, index) => {
                         return (
                             <Card key={`Question-${index}`} data={data} className='' />
                         )
