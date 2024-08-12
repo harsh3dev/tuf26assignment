@@ -61,8 +61,8 @@ const onSubmit = async (data: FormData) => {
                     Create a new account? <a href='/signup' className='text-primary'>Signup</a>
                 </p>
                     <p>
-                        TEST ID: harsh@harsh.com
-                        TEST Password: 123456
+                        Test ID: harsh@harsh.com <br/>
+                        Password: 123456
                     </p>
             </div>
         </div>

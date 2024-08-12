@@ -18,6 +18,11 @@ import { useForm, SubmitHandler, Form } from 'react-hook-form';
 import axios from "axios"
 import { useState } from "react"
 
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
+
+
 interface DataProps {
     question: string;
     answer: string;
@@ -43,6 +48,7 @@ export function AddPost() {
         } finally {
             setLoading(false);
             window.location.reload();
+            toast.success("Successfully added new question");
         }
     }
 

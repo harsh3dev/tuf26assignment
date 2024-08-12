@@ -4,6 +4,8 @@ import "./globals.css";
 import { cn } from "@/lib/utils"
 const inter = Inter({ subsets: ["latin"] });
 import { ThemeProvider } from "@/components/theme-provider";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -30,6 +32,19 @@ export default function RootLayout({
 					
 				>
 				{children}
+				<ToastContainer
+					position="top-right"
+					autoClose={5000}
+					hideProgressBar={false}
+					newestOnTop
+					closeOnClick
+					rtl={false}
+					pauseOnFocusLoss
+					draggable
+					pauseOnHover
+					theme="light"
+					/>
+
 				</ThemeProvider>
 			</body>
 		</html>

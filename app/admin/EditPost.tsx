@@ -18,6 +18,8 @@ import { useForm, SubmitHandler, Form } from 'react-hook-form';
 import axios from "axios"
 import { useState } from "react"
 
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 
 interface DataProps {
@@ -48,8 +50,9 @@ const EditPost: React.FC<EditPostProps> =({data, className}) => {
             const response = await axios.put(`/api/posts/${data.id}`, {
                 question,
                 answer,
-              });
+                });
             console.log('SUCCESS', response.data);
+            toast.success("Successfully edited question");
             setOpen(false);
         } catch (error: any) {
             if (axios.isAxiosError(error)) {

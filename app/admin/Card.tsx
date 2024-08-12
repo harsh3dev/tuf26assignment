@@ -6,6 +6,8 @@ import { MdDeleteOutline } from "react-icons/md";
 import EditPost from './EditPost';
 import { IoReloadOutline } from "react-icons/io5";
 
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 
 interface DataProps {
@@ -39,6 +41,7 @@ const Card: React.FC<CardProps> = ({ data, className }) => {
         } finally {
             setLoading(false);
             window.location.reload();
+            toast.success("Successfully deleted question");
         }
     }
 
